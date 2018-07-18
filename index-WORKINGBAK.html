@@ -103,12 +103,6 @@ body {
 	outline: none;
 	border: none;
 	letter-spacing: 2px;
-	transition: 0.1s ease all
-}
-	
-.button-style:hover {
-	background-color: #466f9a;
-
 }
 
 .header-strip-mb-sub {
@@ -340,11 +334,7 @@ nav .nav__menu-item--bag:hover::after {
 	-webkit-filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.3));
 	filter: drop-shadow(0px -1px 1px rgba(0,0,0,0.3));
 }
-	
-nav .nav__burger {
-	width: 180px;
-}	
-	
+
 main .carousel {
 	height: 750px;
     background-position: center;
@@ -451,11 +441,7 @@ main li.carousel__controls--button-highlighted {
 	}
 	
 	
-	@media (min-width: 1300px){
-		nav .nav__burger {
-			display: none;
-		}
-	}	
+	
 
 @media (max-width: 1300px) {
 
@@ -472,15 +458,6 @@ main li.carousel__controls--button-highlighted {
 	header .header__announce {
 		display: none;
 	}
-	
-	nav {
-		padding: 30px 20px;
-	}
-	
-	nav .nav__logo {
-		display: flex;
-		justify-content: center;
-	}
 
 	.header-strip-mb-sub {
 		background-color: #e9f0f7;
@@ -493,26 +470,6 @@ main li.carousel__controls--button-highlighted {
 		text-align: center;
 		font-weight: bold;
 		text-transform: uppercase;
-	}
-	
-	.hide-on-sm {
-		display: none;
-	}
-	
-	.show-on-sm {
-		display: block;
-	}
-	
-	nav .nav__menu-item--bag:hover::after {
-		top: 185px;
-		right: 24px;
-	}
-
-
-	nav .nav__dropdown-bag {
-		top: 200px;
-		right: 20px;
-		width: 250px;
 	}
 
 }
@@ -540,13 +497,10 @@ main li.carousel__controls--button-highlighted {
 	</div>
 <!-- NAVIGATION -->
 	<nav class="hovernav">
-		<div class="nav__burger show-on-sm">
-			<img src="./mob/elem/ic_drawer.svg">
-		</div>
 		<div class="nav__logo">
 			<img src="./img/large.svg">
 		</div>
-		<div class="nav__menu hide-on-sm">
+		<div class="nav__menu">
 			<ul class="nav__menu-container">
 				<li class="nav__menu-item"><a href="#">Home</a></li>
 				<li class="nav__menu-item"><a href="#">Collections</a></li>
@@ -579,9 +533,9 @@ main li.carousel__controls--button-highlighted {
 			</div>
 		</div>
 		<div class="nav__icons">
-			<img class="hide-on-sm" src="./ico/search.svg">
-			<img class="hide-on-sm" src="./ico/profile.svg">
-			<img class="hide-on-sm" src="./ico/heart.svg">
+			<img src="./ico/search.svg">
+			<img src="./ico/profile.svg">
+			<img src="./ico/heart.svg">
 			<a href="#" class="nav__menu-item--bag"><img src="./ico/bag.svg"></a>
 		</div>
 		<div class="nav__dropdown-bag">
@@ -652,7 +606,7 @@ main li.carousel__controls--button-highlighted {
 			<div class="carousel__arrow flip-back"><img src="./ico/back.svg"></div>
 			<div class="carousel__controls">
 				<ul>
-					<li class="carousel__controls--button carousel__controls--button-highlighted"></li>
+					<li class="carousel__controls--button"></li>
 					<li class="carousel__controls--button"></li>
 					<li class="carousel__controls--button"></li>
 			</div>
@@ -673,10 +627,6 @@ main li.carousel__controls--button-highlighted {
 	
 var slideContainer = document.querySelector('.carousel__slider-container');
 var transformValueDefault = 0;
-var k = 0;
-var slideNumber = document.querySelectorAll(".spacer");
-var slideLength = slideNumber.length;
-var kTimes = (k*100);
 
 (function menuDropDownHover(){
  	var items = document.querySelectorAll('.nav__menu-item');
@@ -723,12 +673,10 @@ var kTimes = (k*100);
 					var x = i;
 					switch (x){
 						case 0:
-							k -= 1;
-							imageSlideRight();
+							imageSlideRight(x);
 							break;
 						case 1:
-							k += 1;
-							imageSlideLeft();
+							imageSlideLeft(x);
 							break;
 						default:
 							// DO NOTHING
@@ -738,51 +686,22 @@ var kTimes = (k*100);
 	}
 })();
 
-function imageSlideRight() {
-	if(k<0){
-		var y = (k*100)-100;
-		slideContainer.style.webkitTransform = "translate(" + (transformValueDefault += y) + "vw)";
-		k = (slideLength-1);
-	} else {
-		slideContainer.style.webkitTransform = "translate(" + (transformValueDefault += 100) + "vw)";
-	}
-	
-	
-	scrollButtons();
+function imageSlideRight(x) {
+	slideContainer.style.webkitTransform = "translate(" + (transformValueDefault += 100) + "vw)";
+	scrollButtons(x);
 }
 	
-function imageSlideLeft() {
-	//alert(k);
-	if(k>=slideLength){
-		var y = (k*100) -100;
-		slideContainer.style.webkitTransform = "translate(" + (transformValueDefault += y) + "vw)";
-		k = 0;
-	} else {
-		slideContainer.style.webkitTransform = "translate(" + (transformValueDefault -= 100) + "vw)";
-	}
-	scrollButtons();
-		console.log(k);
+function imageSlideLeft(x) {
+	slideContainer.style.webkitTransform = "translate(" + (transformValueDefault -= 100) + "vw)";
+	scrollButtons(x);
 }
 	
-function scrollButtons() {
+function scrollButtons(x) {
 	var buttons = document.querySelectorAll('.carousel__controls--button');
-	//alert(k);
-	//buttons[k].classList.toggle('carousel__controls--button-highlighted');
-	for(var i=0;i<buttons.length;i++){
-		if(k === i){
-			buttons[k].classList.add('carousel__controls--button-highlighted');
-		}
-		for(let j=0;j<buttons.length;j++){
-			if(j !== k){
-				buttons[j].classList.remove('carousel__controls--button-highlighted');
-			}
-		}
+	for(let i=0;i<){
+		buttons[i].classList.toggle('carousel__controls--button-highlighted');
 	}
 }
-
-
-	
-
 
 </script>
 
