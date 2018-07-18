@@ -468,6 +468,10 @@ main li.carousel__controls--button-highlighted {
 		        justify-content: center;
 	}
 
+	main .carousel {
+		height: 550px;
+	}
+
 	.header-strip-mb-sub {
 		background-color: #e9f0f7;
 		height: 40px;
