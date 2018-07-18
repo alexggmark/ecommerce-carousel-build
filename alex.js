@@ -17,7 +17,7 @@ var kTimes = (k*100);
 	 		dropDownMenu.style.display = "flex";
 	 	});
  	}
-	/* CLOSE MENU DROPDOWN IF USER HOVERS OUT OF NAV-HEADER AREA */
+	/* CLOSE MENU DROPDOWN IF USER HOVERS OUT OF NAV-HEADER  AREA */
 	 main.addEventListener("mouseout",function(){
 	 	dropDownMenu.style.display = "none";
 	 });
