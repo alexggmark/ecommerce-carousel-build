@@ -5,6 +5,8 @@ var slideNumber = document.querySelectorAll(".spacer");
 var slideLength = slideNumber.length;
 var kTimes = (k*100);
 
+/* MENU CONTROLLERS */
+
 (function menuDropDownHover(){
  	var items = document.querySelectorAll('.nav__menu-item');
  	var dropDownMenu = document.querySelector('.nav__dropdown-menu');
@@ -40,6 +42,8 @@ var kTimes = (k*100);
 	 	bagDropDown.style.display = "none";
 	 });
  })();
+
+ /* CAROUSEL CONTROLLERS */
 	
 (function carouselSlideAlex() {
 	var arrows = document.querySelectorAll('.carousel__arrow');
@@ -79,7 +83,7 @@ function imageSlideRight() {
 }
 	
 function imageSlideLeft() {
-	//alert(k);
+
 	if(k>=slideLength){
 		var y = (k*100) -100;
 		slideContainer.style.webkitTransform = "translate(" + (transformValueDefault += y) + "vw)";
@@ -93,8 +97,7 @@ function imageSlideLeft() {
 	
 function scrollButtons() {
 	var buttons = document.querySelectorAll('.carousel__controls--button');
-	//alert(k);
-	//buttons[k].classList.toggle('carousel__controls--button-highlighted');
+
 	for(var i=0;i<buttons.length;i++){
 		if(k === i){
 			buttons[k].classList.add('carousel__controls--button-highlighted');
