@@ -2,203 +2,617 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<title>HTML5 boilerplate – all you really need…</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet">
 	<!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
 <style>
 
-* {
-		border: 1px solid #f00;
+/*------------------------------------*\
+    RESET
+\*------------------------------------*/
+
+html,body,div,span,applet,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+a,abbr,acronym,address,big,cite,code,
+del,dfn,em,img,ins,kbd,q,s,samp,
+small,strike,strong,sub,sup,tt,var,
+b,u,i,center,
+dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary,
+time,mark,audio,video{
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    font:inherit;
+    vertical-align:baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section{
+    display:block;
+}
+body{
+    line-height:1;
+}
+ol,ul{
+    list-style:none;
+}
+blockquote,q{
+    quotes:none;
+}
+blockquote:before,blockquote:after,
+q:before,q:after{
+    content:’’;
+    content:none;
+}
+/* remember to define visible focus styles! 
+:focus{
+    outline:?????;
+} */
+
+/* remember to highlight inserts somehow! */
+ins{
+    text-decoration:none;
+}
+del{
+    text-decoration:line-through;
 }
 
-#body {
-	margin: 0;
-	overflow-x: hidden;
+table{
+    border-collapse:collapse;
+    border-spacing:0;
 }
 
-	.background__bg {
-		background-color: #000;
-		height: 500px;
-		color: black;
+/*------------------------------------*\
+    $MAIN
+\*------------------------------------*/
+/* GO! */
+
+
+body {
+	width: 100%;
+	margin: 0 auto;
+	font-family: 'Roboto Mono', monospace;
+}
+
+.uniform-small-pad {
+	padding-bottom: 10px;
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.button-style {
+	background-color: #2d4966;
+	text-transform: uppercase;
+	color: #fff;
+	padding: 18px 40px;
+	font-size: 18px;
+	outline: none;
+	border: none;
+	letter-spacing: 2px;
+}
+
+.header-strip-mb-sub {
+	display: none;
+}
+
+header {
+	background-color: #e9f0f7;
+	color: #191919;
+	padding: 15px 80px;
+	height: 22px;
+	overflow: hidden;
+	text-transform: uppercase;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	letter-spacing: 2px;
+}
+
+header .header__curr-select {
+	font-size: 12px;
+	width: 30%;
+}
+
+header .header__curr-select span {
+	border: 1px solid #191919;
+	padding: 6px 15px;
+	font-weight: bold;
+	letter-spacing: 0px;
+}
+
+header .header__announce {
+	font-size: 14px;
+	width: 30%;
+	text-align: center;
+	font-weight: bold;
+}
+
+header .header__lang-select {
+	width: 30%;
+	text-align: right;
+	font-weight: regular;
+	font-size: 18px;
+}
+
+header .header__lang-select--down {
+	width: 15px;
+}
+
+nav {
+	color: #304c68;
+	padding: 30px 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	letter-spacing: 2px;
+}
+
+nav .nav__logo {
+	width: 180px;
+}
+
+nav .nav__menu-container {
+	text-align:center;
+	width: auto;
+}
+
+nav ul.nav__menu-container {
+	 list-style-type: none;
+	 font-weight: bold;
+	 text-transform: uppercase;
+	 font-size: 17px;
+}
+
+nav ul.nav__menu-container li {
+	float: left;
+	padding: 0 50px;
+}
+
+nav ul.nav__menu-container li a {
+	text-decoration: none;
+	color: inherit;
+}
+
+nav .nav__dropdown-menu {
+	position: absolute;
+	display: none;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 80%;
+	min-height: 200px;
+	background-color: #fff;
+	color: #191919;
+	z-index: 1;
+	top: 170px;
+	padding: 25px;
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.4);
+}
+
+nav ul.nav__menu-container li:hover::after {
+    display:block;
+    content: "";
+    position: absolute;
+    top: 155px;
+    z-index: 2;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 15px 15px 15px;
+	border-color: transparent transparent #fff transparent;
+	-webkit-filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.3));
+	filter: drop-shadow(0px -1px 1px rgba(0,0,0,0.3));
+}
+
+nav .nav__dropdown-menu--item {
+	width: 20%;
+	text-align: center;
+}
+
+nav .nav__dropdown-menu--item img {
+	width: 100%;
+}
+
+nav .nav__dropdown-menu--item li {
+	margin: 25px;
+	font-weight: bold;
+}
+
+nav .nav__icons {
+	width: 180px;
+	text-align:right;
+}
+
+nav .nav__icons img {
+	padding: 0 5px;
+}
+
+
+nav .nav__dropdown-bag {
+	position: absolute;
+	display: none;
+	width: 300px;
+	min-height: 200px;
+	background-color: #fff;
+	color: #191919;
+	z-index: 1;
+	top: 170px;
+	right: 20px;
+	padding: 35px;
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.4);
+	letter-spacing: 0px;
+}
+
+nav .nav__dropdown-bag h2.title {
+	font-size: 22px;
+	font-weight: bold;
+}
+
+nav .nav__dropdown-bag .divider {
+	width: 100%;
+	height: 1px;
+	background-color: #eeeeee;
+	margin: 20px 0;
+}
+
+nav .nav__dropdown-bag .product-flex {
+	display: flex;
+}
+
+nav .nav__dropdown-bag .product-img {
+	width: 250px;
+	padding-right: 20px;
+}
+
+nav .nav__dropdown-bag .product-img img {
+	width: 100%;
+}
+
+nav .nav__dropdown-bag .product-info {
+	width: 100%;
+}
+
+nav .nav__dropdown-bag .product-title {
+	font-weight: bold;
+}
+
+nav .nav__dropdown-bag .product-title-subtitle {
+	font-size: 12px;
+	color: #b8b8b8;
+}
+
+nav .nav__dropdown-bag .product-quantity {
+	margin: 22px 0;
+	font-size: 18px;
+}
+
+nav .nav__dropdown-bag .product-price {
+	font-size: 22px;
+	font-weight: bold;
+}
+
+nav .nav__dropdown-bag .remove {
+	width: 20px;
+
+}
+
+nav .nav__dropdown-bag .remove img {
+	width: 20px;
+}
+
+nav .nav__dropdown-bag .cart-button {
+	margin-top: 20px;
+	width: 100%;
+}
+
+nav .nav__menu-item--bag:hover::after {
+    display:block;
+    content: "";
+    position: absolute;
+    top: 155px;
+    right: 80px;
+    z-index: 2;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 15px 15px 15px;
+	border-color: transparent transparent #fff transparent;
+	-webkit-filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.3));
+	filter: drop-shadow(0px -1px 1px rgba(0,0,0,0.3));
+}
+
+main .carousel {
+	height: 750px;
+	background: url('./img/slider/Background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 75px;
+	letter-spacing: 2px;
+}
+
+main .carousel__arrow {
+	width: 35px;
+}
+
+main .carousel__arrow img {
+	width: 35px;
+}
+
+main .carousel__arrow.flip-back img {
+	transform: rotate(180deg);
+}
+
+main .carousel__content {
+	width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+	color: #fff;
+	text-align: center;
+}
+
+main .carousel__content h1 {
+	font-family: 'Georgia';
+	font-weight: bold;
+	font-size: 65px;
+	text-align: center;
+}
+
+main .carousel__content span {
+	margin: 35px 0;
+	font-size: 18px;
+	text-align: center;
+}
+
+main .carousel__content button {
+	width: 180px;
+}
+
+main .carousel__controls {
+	position: absolute;
+	bottom: 30px;
+	width: calc(100% - 150px);
+	display: flex;
+	justify-content: center;
+}
+
+main .carousel__controls ul {
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+}
+
+main li.carousel__controls--button {
+	width: 14px;
+	height: 14px;
+	border-radius: 100%;
+	background-color: #ccc;
+	float: left;
+	margin: 7px;
+}
+
+main li.carousel__controls--button:first-of-type {
+	width: 20px;
+	height: 20px;
+	background-color: #fff;
+}
+
+@media (max-width: 1300px) {
+
+	header {
+		padding: 15px 20px;
+		background-color: #ced9e4;
 	}
 
-	.background__bg-overlay {
-		background-color: #fff;
-		content: '';
-		display: block;
-		height: 300px;
-		top: 400px;
-		position: absolute;
-		width: calc(100% + 100px);
-		transform: rotate(-5deg);
+	header .header__curr-select {
+		font-size: 12px;
+		width: 50%;
 	}
 
-	.header__strip {
+	header .header__announce {
+		display: none;
+	}
+
+	.header-strip-mb-sub {
+		background-color: #e9f0f7;
+		height: 40px;
 		width: 100%;
-		min-height: 80px;
-		position: absolute;
-		z-index: 2;
-		top: 0;
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
-		padding: 5px 20px;
-		box-sizing: border-box;
-	}
-
-	.header__logo {
-	}
-
-	.header__menu {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.header__menu-item {
-		color: #fff;
-		margin: 0px 30px;
-	}
-
-	.body-wrapper {
-		margin-top: -300px;
-		left: 0;
-		width: 100%;
-		min-height: 700px;
-		display:flex;
 		justify-content: center;
+		font-size: 14px;
+		text-align: center;
+		font-weight: bold;
+		text-transform: uppercase;
 	}
 
-	.body-wrapper__container {
-		width: 70%;
-		position: relative;
-	}
+}
 
-	.body-wrapper__container--white {
-		background-color: #fff;
-	}
-
-	.body-wrapper__container--shadow::before {
-		position: relative;
-	    display: block;
-	    content: '';
-	    width:100%;
-	    height: 500px;
-		box-shadow: 0px -50px 60px rgba(0,0,0,0.2);
-	}
-
-	.body-wrapper__container-inner {
-	    position: absolute;
-	    top: 0;
-	    width: 100%;
-	    box-sizing: border-box;
-	}
-
-	.body-wrapper__titlestrip {
-		margin: 0;
-		padding: 30px 0px;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-	}
-
-	.body-wrapper__titlestrip--invert {
-		background-color: #000;
-		color: #fff;
-	}
-
-	.body-wrapper__titlestrip--underline::after {
-		content: '';
-		display: block;
-		position: relative;
-		top: 15px;
-		height: 4px;
-		width: 100%;
-    	margin: 0 auto;
-    	/* text-align: center; */
-	}
-
-	.body-wrapper__titlestrip--underline::after {
-		background-color: #fff;
-		border-top: 1px solid #f00;
-   		border-bottom: 1px solid #f00;
-	}
-
-	.body-wrapper__titlestrip--invert .body-wrapper__titlestrip--underline::after {
-
-		background-color: #000;
-		border-top: 1px solid #fff;
-   		border-bottom: 1px solid #fff;
-    	/* text-align: center; */
-	}
-
-	.footer {
-		width: 100%;
-		min-height: 200px;
-		background-color: #000;
-		position: relative;
-	}
 
 </style>
 
 </head>
 
-<body id="body">
-
-	<div class="background__bg">
-		
-		<div class="background__bg-overlay"></div>
-
-	</div>
-
-	<div class="header__strip">
-
-		<div class="header__logo">
-			<span style="color:white;font-size:30px;">TBMC</span>
+<body>
+<!-- TOP STRIP INFO -->
+	<header>
+		<div class="header__curr-select">
+			<span>GBP</span>
+			<span>USD</span>
 		</div>
-		
-		<div class="header__menu">
-			<a class="header__menu-item">Home</a>
-			<a class="header__menu-item">Home</a>
-			<a class="header__menu-item">Home</a>
-			<a class="header__menu-item">Home</a>						
+		<div class="header__announce">
+			Announce something here
 		</div>
-
+		<div class="header__lang-select">
+			UK <img src="./ico/down.svg" class="header__lang-select--down">
+		</div>
+	</header>
+	<div class="header-strip-mb-sub">
+		Announce something here
 	</div>
-
-	<div class="body-wrapper">
-		<div class="body-wrapper__container body-wrapper__container--white body-wrapper__container--shadow">
-			<div class="body-wrapper__container-inner">
-				
-				<div class="body-wrapper__titlestrip <!--body-wrapper__titlestrip--invert-->">
-					<h1 class="body-wrapper__titlestrip--underline">TEST TITLE</h1>
-				</div>
-				<div class="">
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</div>
-
+<!-- NAVIGATION -->
+	<nav>
+		<div class="nav__logo">
+			<img src="./img/large.svg">
+		</div>
+		<div class="nav__menu">
+			<ul class="nav__menu-container">
+				<li class="nav__menu-item"><a href="#">Home</a></li>
+				<li class="nav__menu-item"><a href="#">Collections</a></li>
+				<li class="nav__menu-item"><a href="#">Lookbook</a></li>
+				<li class="nav__menu-item"><a href="#">About</a></li>
+			</ul>
+		</div>
+		<div class="nav__dropdown-menu">
+			<div class="nav__dropdown-menu--item">
+				<ul>
+					<li>Collection 1</li>
+					<li>Collection 2</li>
+					<li>Collection 3</li>
+					<li>Collection 4</li>
+				</ul>
+			</div>
+			<div class="nav__dropdown-menu--item">
+				<ul>
+					<li>Collection 1</li>
+					<li>Collection 2</li>
+					<li>Collection 3</li>
+					<li>Collection 4</li>
+				</ul>
+			</div>
+			<div class="nav__dropdown-menu--item">
+				<img src="./img/large.svg">
+			</div>
+			<div class="nav__dropdown-menu--item">
+				<img src="./img/large.svg">
 			</div>
 		</div>
-	</div>
+		<div class="nav__icons">
+			<img src="./ico/search.svg">
+			<img src="./ico/profile.svg">
+			<img src="./ico/heart.svg">
+			<a href="#" class="nav__menu-item--bag"><img src="./ico/bag.svg"></a>
+		</div>
+		<div class="nav__dropdown-bag">
+			<h2 class="title">Your Cart</h2>
+			<div class="divider"></div>
+			<div class="product-flex">
+				<div class="product-img">
+					<img src="./img/large.svg">
+				</div>
+				<div class="product-info">
+					<div class="product-title uniform-small-pad">
+						Product Title
+					</div>
+					<div class="product-title-subtitle">
+						Product Subtitle
+					</div>
+					<div class="product-quantity">
+						- 1 +
+					</div>
+					<div class="product-price">
+						£3.50
+					</div>
+				</div>
+				<div class="remove"><img src="./ico/cancel.svg"></div>
+			</div>
+			<div class="divider"></div>
+			<div class="product-flex">
+				<div class="product-img">
+					<img src="./img/large.svg">
+				</div>
+				<div class="product-info">
+					<div class="product-title uniform-small-pad">
+						Product Title
+					</div>
+					<div class="product-title-subtitle">
+						Product Subtitle
+					</div>
+					<div class="product-quantity">
+						- 1 +
+					</div>
+					<div class="product-price">
+						£60.00
+					</div>
+				</div>
+				<div class="remove"><img src="./ico/cancel.svg"></div>
+			</div>
+			<button class="cart-button button-style flex-center">CHECKOUT</button>
 
-	<div class="footer">
+		</div>
+	</nav>
+<!-- MAIN CAROUSEL SECTION -->
+	<main>
+		<div class="carousel">
+			<div class="carousel__arrow"><img src="./ico/back.svg"></div>
+			<div class="carousel__content">
+				<h1>Image Slider</h1>
+			<span>Tell us your brand's story through images and videos</span>
+			<button class="flex-center button-style">EXPLORE</button>
+			</div>
+			<div class="carousel__arrow flip-back"><img src="./ico/back.svg"></div>
+			<div class="carousel__controls">
+				<ul>
+					<li class="carousel__controls--button"></li>
+					<li class="carousel__controls--button"></li>
+					<li class="carousel__controls--button"></li>
+			</div>
+		</div>
+	</main>
+<!-- FOOTER PERSONAL INFO -->
+	<footer>
 
-	</div>
+	</footer>
+
+<script>
+
+(function menuDropDownHover(){
+ 	var items = document.querySelectorAll('.nav__menu-item');
+ 	var dropDownMenu = document.querySelector('.nav__dropdown-menu');
+ 	for(var i=0;i<items.length;i++){
+	 	items[i].addEventListener("mouseover",function(){
+	 		dropDownMenu.style.display = "flex";
+	 	});
+	 	items[i].addEventListener("mouseout",function(){
+	 		dropDownMenu.style.display = "none";
+	 	});
+ 	}
+ })();
+
+ (function shoppingCartDropDown(){
+ 	var bagItem = document.querySelector('.nav__menu-item--bag');
+ 	var bagDropDown = document.querySelector('.nav__dropdown-bag');
+ 	bagItem.addEventListener("mouseover",function(){
+	 		bagDropDown.style.display = "block";
+	 });
+	 bagItem.addEventListener("mouseout",function(){
+	 	bagDropDown.style.display = "none";
+	 });
+ })();
+
+
+</script>
 
 </body>
 </html>
